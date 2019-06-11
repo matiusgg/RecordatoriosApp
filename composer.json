@@ -1,0 +1,22 @@
+{
+    "name": "user/_plantilla",
+    "description": "PLANTILLA",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Matius",
+            "email": "newpowerexperience2016@gmail.com"
+        }
+    ],
+
+    "autoload": {
+
+        "psr-4": {
+
+            "models\\": "models/"
+        }
+    },
+    
+    "require": {}
+}
