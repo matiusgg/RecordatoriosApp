@@ -1,4 +1,4 @@
-.boton{
+.anytime{
 
     /* BOTON */
     display: inline-block;
@@ -8,4 +8,19 @@
     border-radius: 5px;
     justify-content: center;
     align-items: center;
+    color: white;
 }
+
+.today{
+
+    /* BOTON */
+    display: inline-block;
+    background: blue;
+    padding: 0.3rem 0;
+    text-align: center;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+

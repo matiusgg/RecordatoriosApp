@@ -23,8 +23,14 @@ if(isset($_POST['inbox'])) {
     $gtd = new Conexion('localhost', 'root', '', 'recordatorios');
     // ANTES: $gtd->InsertarTupla('gtd', 'recordatorio', "\" $inboxBD \"");
     $gtd->InsertarTupla('gtd', $inbox);
-    $gtd->verResultados('gtd');
+    $gtd->verTuplas('gtd');
     // $gtd->CrearTabla('historialbase', $Atributosinbox);
+
+    $anytime = new Conexion('localhost', 'root', '', 'recordatorios');
+    $today = new Conexion('localhost', 'root', '', 'recordatorios');
+
+    // $anytime->CrearTabla('anytime', $Atributosinbox);
+    // $today->CrearTabla('today', $Atributosinbox);
 
     
     echo('<a href="php/contactar.php">');
@@ -33,6 +39,41 @@ if(isset($_POST['inbox'])) {
 
 
 }
+
+// ENVIAR INFORMACION DEL INBOX A ANYTIME
+
+if((!empty($_POST['anytime'])) && (!empty($_POST['inbox']))) {
+
+$anytimeInbox = [
+
+    'recordatorio' => $_POST['inbox']
+];
+
+// $anytime = new Conexion('localhost', 'root', '', 'recordatorios');
+
+$anytime->InsertarTupla('anytime', $anytimeInbox);
+
+header('Location: php/anytime.php');
+
+}
+
+// ENVIAR INFORMACION DEL INBOX A TODAY
+
+if((!empty($_POST['today'])) && (!empty($_POST['inbox']))) {
+
+    $todayInbox = [
+    
+       'recordatorio' => $_POST['inbox']
+    ];
+    // creamos el objeto. Actualizacion: La creacion de los objetos anytime y today, estan en sus propias paginas
+
+    // $today = new Conexion('localhost', 'root', '', 'recordatorios');
+    
+    $today->InsertarTupla('today', $todayInbox);
+    
+    header('Location: php/today.php');
+    
+    }
 
 
 ?>
@@ -77,9 +118,21 @@ if(isset($_POST['inbox'])) {
     <textarea name="inbox" rows="10">
     </textarea>
 
-<button type="submit">
+<!-- <button type="submit">
 AGREGAR RECORDATORIO
-</button>
+</button> -->
+
+<!-- PARA ENVIAR INFORMACION A VARIAS PAGINAS CON HTML USAMOS INPUT: SUBMIT. EL CUAL NOS PERMITIRA ENVIAR INFORMACION -->
+
+<!-- Input enviar anytime -->
+
+<input type="submit" name="anytime" class="anytime" value="Anytime">
+
+<!-- Input enviar today -->
+
+<input type="submit" name="today" class="today" value="Today">
+
+
     </div>
     </article>
 

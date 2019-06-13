@@ -24,7 +24,8 @@ class Conexion{
         // AQUI BASICAMENTE LO QUE HICIMOS FUE IGUALAR LA PROPIEDAD 'CONEXION' CON EL METODO DE MYSQLI
         // para cuando creamos el objeto, ya dentro del constructor esta el mysqli.
 
-
+// el \mysqli, lo que sucede que es la funcion/metodo mysqli no lo tenemos en la carpeta de models, ya que este metodo es propio del php.
+// Al usarlo aqui dentro de un namespace, este nos daria error porque autoload no encuentra el metodo mysqli dentro del namspace de models que lo tenemos en la carpeta models, por lo cual usamos '\' para indicarle que salga de la carpeta y que no nos cree conflicto.
 
 $this->conexion = new \mysqli($servidor, $usuario, $password, $basededatos);
 
@@ -96,18 +97,16 @@ $this->conexion = new \mysqli($servidor, $usuario, $password, $basededatos);
 
 
 
-    public function verResultados($nombretabla) {
+    public function verTuplas($nombretabla) {
 
-
-        
-
-        // foreach($AtributosyDatos AS $key => $valor) {
-
-
-
-        // }
+// OTRA FORMA: Si usamos esta opcion, tenemos que poner el parametro de verTuplas(), $AtributosyDatos para que aplique el implode
+        // $atributos = implode(", " , array_keys($AtributosyDatos));
 
      
+        // $leer = $this->conexion->query("select $atributos from $nombretabla");
+
+        // FORMA ACTUAL
+
         $leer = $this->conexion->query("select * from $nombretabla");
 
 // CREAMO SUN FOREACH PARA QUE $resultados, para uqe nos muestre los datos de la base de datos, en este caso dentro de [nosmbre de atributo].
@@ -116,8 +115,27 @@ echo('<pre>');
 print_r($leer);
 echo('</pre>');
 
-
+$i = 0;
 foreach($leer AS $valor) {
+
+    
+
+   
+    // foreach($AtributosyDatos as $key=>$valor) {
+
+    //   // creacion del array en donde $dato[posiciones] va ir acumulando por cada vuelta del bucle, va a ir a acumulando
+    //   // los valores de las llaves, como vemos tiene antes y despues de $valor strings con " ' " para poner el contenido en modo string en mysql.
+    //   // el contador cada vez que va aumentando va sumando 1
+   
+    //  $dato[$i] = "'" . $valor . "'";
+    //     $i++;
+        
+    // }
+    // }
+
+
+    // Condicionar para que nos muestre los datos de la tabla segun el $nombretabla
+
 
 if($nombretabla == 'gtd') {
 
@@ -141,6 +159,21 @@ if($nombretabla == 'contactar') {
 
 
 }
+
+
+// ver y mostrar LOS RECORDATORIOS ANYTIME Y TIME.
+
+// USARIAMOS RECORDATORIO PORQUE OBVIAMENTE QUEREMOS QUE NOS MUESTREN LOS RECORDATORIOS DEL ATRIBUTO 'RECORDATORIO'
+
+echo $valor['recordatorio'] . ' - ' . '<br>';
+
+// MOSTRAR FECHA Y DIA
+
+// array con los dias de la semana, la necesitamos para que la funcion se ejecute.
+
+// STRTOTIME: NOS RECOGE LA INFORMACION DE UNA FECHA(SI LA VARIABLE O $_post ES UNA FECHA). 
+
+// EL DOMINGO ES CUANDO EMPIEZAN LOS ANGLOSAJONES
 
 
 
@@ -168,7 +201,7 @@ if($nombretabla == 'contactar') {
 
 
 
-
 }
+
 
 ?>
