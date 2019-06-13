@@ -91,31 +91,35 @@ if((!empty($_POST['today'])) && (!empty($_POST['inbox']))) {
     
 </head>
 <body>
- <form action="index.php" method="post">
+
+<!-- DIV que nos ayudara a contener el contenidp -->
+
+<div class="contenedor">
+
+    <!-- HEADER -->
+
+<header>
+    <h1 class="titulo">
+        <!-- METODO_BEN: METODOLOGIA PARA IDENTIFICAR UNA ETIQUETA: PADRE-HIJO: titulo__icono Donde titulo es h2(padre) y la img(hijo)... -->
+    <img class="titulo__icono" src="_assets/img/svg/btn_Inbox_index.svg" alt="">GTD</h1>
+
+
+</header>
+ <form action="index.php" method="post" class="formulario__inbox">
         <!-- <input type="text" name="dniLogin" placeholder="introduce tu DNI"
         pattern="[0-9]{8}[a-zA-Z]{1}">
         <button type="submit">Enviar</button> -->
 
-        
-  
-
-    <!-- HEADER -->
-
-    <header>
-   <h1>
-   GTD. GESTIONA TUS TAREAS
-   </h1>
-    </header>
-
 <!-- SECTION -->
-    <section>
+    <section class="formulario">
     <article>
     <div>
     <h2>
     INBOX
     </h2>
 
-    <textarea name="inbox" rows="10">
+    <textarea class="formulario__inbox_recordatorio" name="inbox" >
+      
     </textarea>
 
 <!-- <button type="submit">
@@ -126,11 +130,11 @@ AGREGAR RECORDATORIO
 
 <!-- Input enviar anytime -->
 
-<input type="submit" name="anytime" class="anytime" value="Anytime">
+<input type="submit" name="anytime" class="formulario__inbox_botonAnytime" value="+">
 
 <!-- Input enviar today -->
 
-<input type="submit" name="today" class="today" value="Today">
+<input type="submit" name="today" class="formulario__inbox_botonToday" value="+">
 
 
     </div>
@@ -146,5 +150,8 @@ AGREGAR RECORDATORIO
     </footer>
 
     </form>
+
+
+    </div>
 </body>
 </html>

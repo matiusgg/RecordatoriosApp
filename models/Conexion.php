@@ -171,6 +171,8 @@ echo $valor['recordatorio'] . ' - ' . '<br>';
 
 // array con los dias de la semana, la necesitamos para que la funcion se ejecute.
 
+$dias = ['domingo', 'lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado'];
+
 // STRTOTIME: NOS RECOGE LA INFORMACION DE UNA FECHA(SI LA VARIABLE O $_post ES UNA FECHA). 
 
 // EL DOMINGO ES CUANDO EMPIEZAN LOS ANGLOSAJONES

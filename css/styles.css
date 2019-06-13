@@ -1,26 +1,103 @@
-.anytime{
+.formulario__inbox_botonAnytime{
 
     /* BOTON */
-    display: inline-block;
-    background: blue;
-    padding: 0.3rem 0;
-    text-align: center;
-    border-radius: 5px;
-    justify-content: center;
-    align-items: center;
-    color: white;
+   border: 0;
+   width: 65px;
+   height: 65px;
+   border-radius: 50%;
+   font-size: 2rem;
+   background-color: #38A69B;
+   cursor: pointer;
+
 }
 
-.today{
+.formulario__inbox_botonToday{
 
     /* BOTON */
+    border: 0;
+   width: 65px;
+   height: 65px;
+   border-radius: 50%;
+   font-size: 2rem;
+   background-color: #FDDB10;
+   cursor: pointer;
+}
+
+.botonesAzules {
+
+    text-decoration: none;
+    height: 48px;
+    width: 100px;
     display: inline-block;
-    background: blue;
-    padding: 0.3rem 0;
-    text-align: center;
-    border-radius: 5px;
     justify-content: center;
     align-items: center;
-    color: white;
+    display: flex;
+    border-radius: 8px;
 }
+
+/* Estilos generales */
+
+/* CUANDO HACEMOS CSS, TENEMOS QUE RESPETAR LA ESTRUCTURA SEGUN LAS ETIQUETAS PADRE-HIJOS. POR LO CUAL BODY CONTIENE A TODO EL CONTENIDO Y POR ESO ES PADRE, Y ASI SUCESIVAMENTE SI ALGUNA ETIQUETA TIENE OTRA ETIQUETA EN SU PROPIA... */
+
+html{
+
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+    background-color: rgb(238, 238, 238)
+}
+
+body {
+
+height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* contenedor no tiene estructura propia ya que si le damos css lo plicara todo. Por lo cual el body nos hace este arreglo, pero para que nos quede centrado si le agregamos al contenedor un width para que se mantenga centrado */
+.contenedor {
+
+width: 80%;
+}
+
+/* em: estructura basica de la tipografia. Las medidas que se hacian es el em, e la que decidia todos los anchos de las fuentes tipografia
+REM: Es mucho mejor, se coloca en el padre, ene ste caso html. Si el padre cambia, todos los cambian */
+/* VIEWPORTHEIGHt: nos estan dando eltamaño total del dispositivo en altura. vh */
+.titulo{
+
+font-size: 4rem;
+}
+
+.botones {
+
+
+}
+
+header{
+
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+footer{
+
+height: 10vh;
+
+}
+
+/* ESTILOS */
+
+.formulario__inbox_recordatorio{
+
+    width: 100;
+    border: 1px dashed #707070;
+    /* height: 30vh; */
+
+}
+/* 
+.formulario {
+
+    height: 68vh;
+} */
 
