@@ -3,6 +3,8 @@ require_once 'vendor/autoload.php';
 use models\{Conexion};
 
 // require_once 'php/conexion';
+$anytime = new Conexion('localhost', 'root', '', 'recordatorios');
+$today = new Conexion('localhost', 'root', '', 'recordatorios');
 
 if(isset($_POST['inbox'])) {
 
@@ -26,8 +28,6 @@ if(isset($_POST['inbox'])) {
     $gtd->verTuplas('gtd');
     // $gtd->CrearTabla('historialbase', $Atributosinbox);
 
-    $anytime = new Conexion('localhost', 'root', '', 'recordatorios');
-    $today = new Conexion('localhost', 'root', '', 'recordatorios');
 
     // $anytime->CrearTabla('anytime', $Atributosinbox);
     // $today->CrearTabla('today', $Atributosinbox);
@@ -42,11 +42,13 @@ if(isset($_POST['inbox'])) {
 
 // ENVIAR INFORMACION DEL INBOX A ANYTIME
 
-if((!empty($_POST['anytime'])) && (!empty($_POST['inbox']))) {
+for($i = 0; $i < 10; $i++) {
+
+if( !empty($_POST['anytime']) && !empty($_POST['inbox' . $i]) ) {
 
 $anytimeInbox = [
 
-    'recordatorio' => $_POST['inbox']
+    'recordatorio' => $_POST['inbox' . $i]
 ];
 
 // $anytime = new Conexion('localhost', 'root', '', 'recordatorios');
@@ -59,11 +61,11 @@ header('Location: php/anytime.php');
 
 // ENVIAR INFORMACION DEL INBOX A TODAY
 
-if((!empty($_POST['today'])) && (!empty($_POST['inbox']))) {
+if((!empty($_POST['today'])) && (!empty($_POST['inbox' . $i]))) {
 
     $todayInbox = [
     
-       'recordatorio' => $_POST['inbox']
+       'recordatorio' => $_POST['inbox' . $i]
     ];
     // creamos el objeto. Actualizacion: La creacion de los objetos anytime y today, estan en sus propias paginas
 
@@ -74,6 +76,8 @@ if((!empty($_POST['today'])) && (!empty($_POST['inbox']))) {
     header('Location: php/today.php');
     
     }
+
+}
 
 
 ?>
@@ -118,9 +122,16 @@ if((!empty($_POST['today'])) && (!empty($_POST['inbox']))) {
     INBOX
     </h2>
 
-    <textarea class="formulario__inbox_recordatorio" name="inbox" >
-      
-    </textarea>
+    <?php
+
+    for($i = 0; $i < 10; $i++) {
+
+echo '<input type="text" name="inbox' . $i .'">';
+
+    }
+
+
+    ?>
 
 <!-- <button type="submit">
 AGREGAR RECORDATORIO
